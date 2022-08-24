@@ -1,0 +1,90 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.bmuschko:gradle-tomcat-plugin:2.7.0"
+        classpath "edu.umich.med.michr:h2-gradle-plugin:1.0.1"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: "com.bmuschko.tomcat"
+apply plugin: "edu.umich.med.michr.h2-plugin"
+apply plugin: 'checkstyle'
+
+group 'by.seledtsovaos'
+version '1.0-SNAPSHOT'
+
+tomcat {
+    httpPort = 8080
+    stopPort = 8081
+    httpsPort = 8443
+    ajpPort = 8009
+    contextPath = '/'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    compileOnly group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
+    implementation group: 'jstl', name: 'jstl', version: '1.2'
+
+    def tomcatVersion = '8.0.42'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+        "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+        "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+/**
+ * Encoding
+ */
+compileJava.options.encoding = 'UTF-8'
+/**
+ * Runs scripts to create tables in the database.
+ */
+task createSql {
+    group "Database"
+    description "Creates table in database."
+    doLast {
+        def driverName = 'org.h2.Driver';
+        ant.sql(classpath: configurations.runtimeClasspath.asPath,
+            driver: driverName,
+            url: 'jdbc:h2:~/test',
+            userid: 'SA',
+            password: '') {
+            fileset(file: 'src/main/resources/create.sql')
+        }
+    }
+}
+/**
+ * Runs scripts to drop tables in the database.
+ */
+task dropSql {
+    group "Database"
+    description "Creates table in database."
+    doLast {
+        def driverName = 'org.h2.Driver';
+        ant.sql(classpath: configurations.runtimeClasspath.asPath,
+            driver: driverName,
+            url: 'jdbc:h2:~/test',
+            userid: 'SA',
+            password: '') {
+            fileset(file: 'src/main/resources/drop.sql')
+        }
+    }
+}
+/**
+ * Checkstyle configuration
+ */
+checkstyle {
+    toolVersion = '7.1.1'
+    configFile = file("${rootProject.projectDir}/config/checkstyle/checkstyle.xml")
+    ignoreFailures = false
+}
