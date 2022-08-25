@@ -9,10 +9,8 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #d53ad3">
-        <ul class="navbar-nav">
-            <a href="<%=request.getContextPath()%>/items" class="nav-link">Items</a>
-        </ul>
+    <nav>
+        <jsp:include page="header.jsp"/>
     </nav>
 </header>
 <br>

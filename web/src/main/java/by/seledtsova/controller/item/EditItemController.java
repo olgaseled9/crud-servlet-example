@@ -1,4 +1,4 @@
-package by.seledtsova.controller;
+package by.seledtsova.controller.item;
 
 import java.io.IOException;
 
@@ -17,8 +17,8 @@ import static by.seledtsova.constant.PagesConstant.ID;
 import static by.seledtsova.constant.PagesConstant.ITEM_EDIT_JSP_PAGE;
 import static by.seledtsova.constant.PagesConstant.ITEM_MODEL;
 import static by.seledtsova.constant.PagesConstant.JSP_PAGES_LOCATION;
-import static by.seledtsova.controller.EditItemController.EDIT_CONTROLLER_URL;
-import static by.seledtsova.controller.ItemsController.GET_ALL_ITEMS_CONTROLLER_URL;
+import static by.seledtsova.controller.item.EditItemController.EDIT_ITEM_CONTROLLER_URL;
+import static by.seledtsova.controller.item.ItemsController.GET_ALL_ITEMS_CONTROLLER_URL;
 import static by.seledtsova.validation.ItemValidation.hasErrors;
 import static by.seledtsova.validation.ItemValidation.hasParameter;
 import static by.seledtsova.validation.ItemValidation.setFieldsToItemFromRequest;
@@ -26,13 +26,13 @@ import static by.seledtsova.validation.ItemValidation.setFieldsToItemFromRequest
 /**
  * Servlet that handles the request to add or update an {@link ItemDto}.
  */
-@WebServlet(urlPatterns = {EDIT_CONTROLLER_URL})
+@WebServlet(urlPatterns = {EDIT_ITEM_CONTROLLER_URL})
 public class EditItemController extends HttpServlet {
 
     /**
      * Url which handles item's add or edit requests.
      */
-    public static final String EDIT_CONTROLLER_URL = "/items/edit";
+    public static final String EDIT_ITEM_CONTROLLER_URL = "/items/edit";
 
     /**
      * Creates {@link ItemService} object to invoke methods on.

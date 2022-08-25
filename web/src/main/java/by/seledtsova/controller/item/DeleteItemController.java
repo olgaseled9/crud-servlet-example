@@ -1,4 +1,4 @@
-package by.seledtsova.controller;
+package by.seledtsova.controller.item;
 
 import java.io.IOException;
 
@@ -12,19 +12,19 @@ import by.seledtsova.service.ItemService;
 import by.seledtsova.service.impl.ItemServiceImpl;
 
 import static by.seledtsova.constant.PagesConstant.ID;
-import static by.seledtsova.controller.DeleteItemController.DELETE_CONTROLLER_URL;
-import static by.seledtsova.controller.ItemsController.GET_ALL_ITEMS_CONTROLLER_URL;
+import static by.seledtsova.controller.item.DeleteItemController.DELETE_ITEM_CONTROLLER_URL;
+import static by.seledtsova.controller.item.ItemsController.GET_ALL_ITEMS_CONTROLLER_URL;
 
 /**
  * Servlet that handles the request to delete {@link ItemDto} object.
  */
-@WebServlet(urlPatterns = {DELETE_CONTROLLER_URL})
+@WebServlet(urlPatterns = {DELETE_ITEM_CONTROLLER_URL})
 public class DeleteItemController extends HttpServlet {
 
     /**
      * Url which handles item's delete requests.
      */
-    public static final String DELETE_CONTROLLER_URL = "/items/delete";
+    public static final String DELETE_ITEM_CONTROLLER_URL = "/items/delete";
 
     /**
      * Creates {@link ItemService} object to invoke methods on.

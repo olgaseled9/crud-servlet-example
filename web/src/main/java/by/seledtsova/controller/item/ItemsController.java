@@ -1,4 +1,4 @@
-package by.seledtsova.controller;
+package by.seledtsova.controller.item;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,7 +17,7 @@ import by.seledtsova.service.impl.ItemServiceImpl;
 import static by.seledtsova.constant.PagesConstant.ITEM_LIST_JSP_PAGE;
 import static by.seledtsova.constant.PagesConstant.ITEM_LIST_MODEL;
 import static by.seledtsova.constant.PagesConstant.JSP_PAGES_LOCATION;
-import static by.seledtsova.controller.ItemsController.GET_ALL_ITEMS_CONTROLLER_URL;
+import static by.seledtsova.controller.item.ItemsController.GET_ALL_ITEMS_CONTROLLER_URL;
 
 /**
  * Handles the request to get all selected {@link ItemDto}.

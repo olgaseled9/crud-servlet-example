@@ -6,7 +6,7 @@ package by.seledtsova.constant;
 public class PagesConstant {
 
     /**
-     * Item's id.
+     * Model's id.
      */
     public static final String ID = "id";
     /**
@@ -22,6 +22,10 @@ public class PagesConstant {
      */
     public static final String ITEM_MODEL = "item";
     /**
+     * Model attribute of user's object to jsp page.
+     */
+    public static final String USER_MODEL = "user";
+    /**
      * Model attribute of item's list to jsp page.
      */
     public static final String ITEM_LIST_MODEL = "items";
@@ -30,9 +34,17 @@ public class PagesConstant {
      */
     public static final String ITEM_EDIT_JSP_PAGE = "/edit_item.jsp";
     /**
+     * User's edit jsp page.
+     */
+    public static final String USER_EDIT_JSP_PAGE = "/user_edit.jsp";
+    /**
      * Item's list jsp page.
      */
     public static final String ITEM_LIST_JSP_PAGE = "/get_items.jsp";
+    /**
+     * User's list jsp page.
+     */
+    public static final String USER_LIST_JSP_PAGE = "/get_users.jsp";
     /**
      * Location of all jsp pages.
      */

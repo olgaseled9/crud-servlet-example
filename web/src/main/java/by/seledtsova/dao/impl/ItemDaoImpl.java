@@ -37,7 +37,7 @@ public class ItemDaoImpl implements ItemDao {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(SELECT_ALL_FROM_ITEM_TABLE)) {
             while (resultSet.next()) {
-                items.add(getItem(resultSet));
+                items.add(setFields(resultSet));
             }
             LOGGER.info("Successfully get all items.");
         }
@@ -57,7 +57,7 @@ public class ItemDaoImpl implements ItemDao {
                 if (!resultSet.next()) {
                     throw new DaoException("Item not found with id = " + id);
                 }
-                item = getItem(resultSet);
+                item = setFields(resultSet);
                 LOGGER.info("Item successfully found with id = " + id + " : " + item);
             }
         }
@@ -95,7 +95,7 @@ public class ItemDaoImpl implements ItemDao {
             LOGGER.info("Successfully deleted item with id = " + id);
         }
         catch (SQLException e) {
-            throw new DaoException("Not able to delete department with id = " + id, e);
+            throw new DaoException("Not able to delete item with id = " + id, e);
         }
     }
 
@@ -117,7 +117,7 @@ public class ItemDaoImpl implements ItemDao {
         }
     }
 
-    private Item getItem(ResultSet resultSet) throws SQLException {
+    private Item setFields(ResultSet resultSet) throws SQLException {
         Item item = new Item();
         item.setId(resultSet.getLong("item_id"));
         item.setName(resultSet.getString("name"));

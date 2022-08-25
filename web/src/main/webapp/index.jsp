@@ -11,5 +11,6 @@
 <h1 class="text-center" style="color: #c04a7a">CRUD SERVLET EXAMPLE</h1>
 <hr>
 <a href="${pageContext.request.contextPath}/items"><h2 class="text-center" style="color: #04072f">List of Items</h2></a>
+<a href="${pageContext.request.contextPath}/users"><h2 class="text-center" style="color: #04072f">List of Users</h2></a>
 </body>
 </html>

@@ -1,10 +1,8 @@
 package by.seledtsova.model;
 
-import by.seledtsova.dto.ItemDto;
-
 /**
  * Container for Item entity data, getter and setter methods.
- * @see ItemDto
+ * @see Item
  */
 public class Item {
 
